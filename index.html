@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="js/dendrogram.js"></script>
+</head>
+
+<body>
+<div id="left-page-container">
+  <img src="img/argemone.jpg" id="plant-picture"/>
+  <h1 id="common-name"> Oregano </h1>
+  <h2 id="scientific-name"> Origanum Vulgare </h2>
+</div>
+
+<div id="right-page-container">
+<h2> DESCRIPTION </h2>
+<p id="plant-description"> Oregano (scientific name Origanum vulgare) is a common species of Origanum, a genus of the mint family (Lamiaceae). It is native to temperate western and southwestern Eurasia and the Mediterranean region.
+Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with opposite leaves 1–4 cm (0.39–1.57 in) long. Oregano will grow in a pH range between 6.0 (mildly acidic) and 9.0 (strongly alkaline),
+ with a preferred range between 6.0 and 8.0. The flowers are purple, 3–4 mm (0.12–0.16 in) long, produced in erect spikes. It is sometimes called wild marjoram, and its close relative O. majorana is known as sweet marjoram.
+</p>
+
+<h2 id="taxonomy"> TAXONOMY</h2>
+<div id="dendrogram-container"> </div>
+
+<h2>Search </h2>
+<div id="search-box">
+<input placeholder="search for a plant by scientific name" type="text"></input>
+<p> E.g: Asarina, Lavandula, Mentha. </p>
+</div>
+
+</div>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+/// ///////////////////////// SECTION 1: PARSING CSV ////////////////////////////
+let csvData
+let plantName
+let plantImg
+let plantDescription
+
+// taxonomy variables
+let plantOrder
+let plantFamily
+let plantGenus
+let plantSpecies
+
+// An array of strings; list of all plant names
+let plantNames = []
+
+function drawFromCSV (plantIndex) {
+  d3.csv('plantOutput.csv', function (error, rows) {
+    if (error) { console.log(error.stack) }
+    // populate variables with data from CSV
+    csvData = rows
+    plantName = csvData[plantIndex].name
+    plantImg = csvData[plantIndex].image
+    plantDescription = csvData[plantIndex].paragraph
+    plantOrder = csvData[plantIndex].order
+    plantFamily = csvData[plantIndex].family
+    plantGenus = csvData[plantIndex].genus
+    plantSpecies = csvData[plantIndex].species
+
+    // html container definition
+    let commonName = document.getElementById('common-name')
+    let scientificName = document.getElementById('scientific-name')
+    let plantPicture = document.getElementById('plant-picture')
+    let plantParagraph = document.getElementById('plant-description')
+
+    // populate HTML containers with data from CSV
+    commonName.innerHTML = plantName
+    scientificName.innerHTML = plantSpecies
+    plantPicture.setAttribute('src', plantImg)
+    plantParagraph.innerHTML = plantDescription.replace(/(<([^>]+)>)/ig, '')
+
+    // create a list of all plantNames
+    for (let i = 0; i < csvData.length; i++) { plantNames.push(csvData[i].name) }
+
+    // draw a taxonomy dendrogram from the relevant plant data, and append
+    // it to the html document in the #dendrogram-container div
+    drawDendrogram(plantOrder, plantFamily, plantGenus, plantSpecies)
+    function appendDendro () {
+      let dendroContainer = document.getElementById('dendrogram-container')
+      let viz = document.getElementsByTagName('svg')[0]
+      dendroContainer.appendChild(viz)
+    }
+    appendDendro()
+  })
+}
+drawFromCSV(341)
+
+/// //////////////////// SECTION 2: SEARCH & AUTOCOMPLETE //////////////////////
+
+let searchBar = document.body.getElementsByTagName('input')[0]
+let searchitems = document.body.getElementsByClassName('search-item')
+
+// return (boolean) if the plant string includes the search query
+function plantMatch (plant) {
+  return plant.toLowerCase().includes(searchBar.value.toLowerCase())
+}
+
+/* Delete the autcomplete divs when no search query (.search-item) */
+function deleteBoxes () {
+  while (searchitems[0]) {
+    console.log('deleting search boxes')
+    let searchContainer = document.getElementById('search-box')
+    searchContainer.removeChild(searchitems[0])
+  }
+}
+
+// Remove the old dendrogram when updating the view with new plant data
+function removeOldDendro () {
+  let dendroContainer = document.getElementById('dendrogram-container')
+  let oldSVG = document.getElementsByTagName('svg')[0]
+  dendroContainer.removeChild(oldSVG)
+}
+
+/// // Search Bar Key Event :: Autocomplete Functionality
+searchBar.addEventListener('keyup', function (event) {
+  /* delete the previously recommended autocomplete */
+  deleteBoxes()
+  if (searchBar.value.length > 1) {
+    let plantMatches = plantNames.filter(plantMatch)
+    let uniquePlants = plantMatches.filter(function (item, index) {
+      return plantMatches.indexOf(item) >= index
+    })
+    console.log('plantmatches:', uniquePlants)
+    for (let i = 0; i < uniquePlants.length; i++) {
+      let autocompleteItem = document.createElement('div')
+      let searchbox = document.getElementById('search-box')
+      searchbox.appendChild(autocompleteItem)
+      autocompleteItem.setAttribute('class', 'search-item')
+      autocompleteItem.innerHTML = uniquePlants[i]
+
+      /// // Click Event: Select a new plant from the autocomplete list
+      autocompleteItem.onclick = function () {
+        removeOldDendro()
+        drawFromCSV(plantNames.indexOf(autocompleteItem.innerHTML))
+        deleteBoxes()
+        searchBar.value = ''
+      }
+    }
+  }
+}, 1000)
+</script>
