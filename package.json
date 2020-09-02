@@ -1,0 +1,25 @@
+{
+  "name": "PlantEncyclopedia",
+  "version": "1.0.0",
+  "description": "## Summary *scraper.py* scrapes Wikipedia using BeautifulSoup to collect data on 2000+ plants.  The data is stored in a csv file.",
+  "main": "index.js",
+  "scripts": {
+    "build": "postcss css/tailwind.css -o build/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dboudro/PlantEncyclopedia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dboudro/PlantEncyclopedia/issues"
+  },
+  "homepage": "https://github.com/dboudro/PlantEncyclopedia#readme",
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "postcss-cli": "^7.1.2",
+    "tailwindcss": "^1.7.6"
+  }
+}
