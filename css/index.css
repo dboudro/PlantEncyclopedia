@@ -84,8 +84,8 @@ position: relative;
 }
 input {
   padding-left: 4px;
-  width: 450px;
-  height: 64px;
+  width: 500px;
+  height: 54px;
   display: table;
   border: 2px solid #DDD;
   color: #CCC;
@@ -102,6 +102,7 @@ input {
   border: 1px solid #f8cc87;
   text-decoration: underline;
   font-size: 12px;
+  position: absolute;
 }
 .search-item {
   padding-left: 4px;

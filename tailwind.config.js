@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         brown: {
           '100': '#fff7e5',
+          '150': '#FCF0D7',
           '200': '#ffe4b3',
           '300': '#f8cc87',
           '400': '#e3af68',
