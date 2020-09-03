@@ -62,15 +62,18 @@ function update(source) {
       .on("click", click);
 
   nodeEnter.append("circle")
-      .attr("r", 1e-6)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+      .attr("r", 10)
+      .style("fill", function(d) { return d._children ? "#48bb78" : "#48bb78"; });
 
   nodeEnter.append("text")
-      .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
-      .attr("dy", ".35em")
+      .attr("x", function(d) { return d.children || d._children ? 30 : 30; })
+      .attr("dy", "3em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
       .text(function(d) { return d.name; })
-      .style("fill-opacity", 1e-6);
+      .style("fill-opacity", 1e-6)
+      .style("font-size", '15px')
+      .style("font-family", 'roc-grotesk, sans-serif')
+      .style("fill", '#48bb78');
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -78,8 +81,8 @@ function update(source) {
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-      .attr("r", 4.5)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+      .attr("r", 10)
+      .style("fill", function(d) { return d._children ? "#48bb78" : "#48bb78"; });
 
   nodeUpdate.select("text")
       .style("fill-opacity", 1);
