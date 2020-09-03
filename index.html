@@ -4,39 +4,40 @@
   <link rel="icon" href="../favicon.png">
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <link rel="stylesheet" href="build/tailwind.css">
-    <link rel="stylesheet" href="https://use.typekit.net/ggk0vlq.css">
+  <link rel="stylesheet" href="https://use.typekit.net/ggk0vlq.css">
   <script src="js/dendrogram.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
-<body>
-  <div class="bg-green-800 w-full absolute h-16 text-white">
-    <h1 class="text-xl p-4"> Plant Encylopedia </h1>  
+
+<!---- BODY start --->
+<body class="text-brown-500">
+  <div class="bg-brown-100 w-full h-32 py-5 text-white border border-brown-200 ">
+   <a href="/"><h1 class=" text-4xl font-bold p-4 d-inline w-1/2 text-brown-700 float-left"> Plant Encylopedia </h1>  </a>
+        <div class="w-1/4 d-inline float-left" id="search-box">
+<input class="bg-brown-200 appearance-none border-2 border-brown-300 rounded py-2 px-4 text-brown-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" placeholder="search for a plant by scientific name" type="text"></input>
+</div>  
   </div>
 
-
+<div class="rest-container d-block pt-5">
 <div id="left-page-container">
-  <img class="" src="img/argemone.jpg" id="plant-picture"/>
-  <h1 class="text-3xl" id="common-name"> Oregano </h1>
-  <h2 class="text-3xl"id="scientific-name"> Origanum Vulgare </h2>
+    <h1 class="text-3xl font-regular text-brown-700 float-left" id="common-name"> Oregano </h1>
+  <h2 class="text-3xl font-light pl-3"id="scientific-name"> Origanum Vulgare </h2>
+  <img class="w-full" src="img/argemone.jpg" id="plant-picture"/>
 </div>
 
 <div id="right-page-container">
-<h2> DESCRIPTION </h2>
-<p id="plant-description" class="w-2/3 text-xl"> Oregano (scientific name Origanum vulgare) is a common species of Origanum, a genus of the mint family (Lamiaceae). It is native to temperate western and southwestern Eurasia and the Mediterranean region.
+<h2 class="text-3xl text-brown-700" > Description </h2>
+<p id="plant-description" class="w-full pr-20 text-xl text-brown-700"> Oregano (scientific name Origanum vulgare) is a common species of Origanum, a genus of the mint family (Lamiaceae). It is native to temperate western and southwestern Eurasia and the Mediterranean region.
 Oregano is a perennial herb, growing from 20–80 cm (7.9–31.5 in) tall, with opposite leaves 1–4 cm (0.39–1.57 in) long. Oregano will grow in a pH range between 6.0 (mildly acidic) and 9.0 (strongly alkaline),
  with a preferred range between 6.0 and 8.0. The flowers are purple, 3–4 mm (0.12–0.16 in) long, produced in erect spikes. It is sometimes called wild marjoram, and its close relative O. majorana is known as sweet marjoram.
 </p>
 
-<h2 id="taxonomy"> TAXONOMY</h2>
-<div id="dendrogram-container"> </div>
-
-<div id="search-box">
-
-<input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" placeholder="search for a plant by scientific name" type="text"></input>
+<h2 class="text-3xl text-brown-700" id="taxonomy"> Taxonomy</h2>
+<div class="bg-brown-100 w-32"id="dendrogram-container" > </div>
 
 </div>
-
+</div>
 </div>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>

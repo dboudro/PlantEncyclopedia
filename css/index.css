@@ -1,18 +1,6 @@
 ::selection {
   background-color: #A5D6A7;
 }
-@font-face {
-    font-family: bebas;
-    src: url(/../PlantEncyclopedia/font/BebasNeueBook.otf);
-}
-@font-face {
-    font-family: bebas-bold;
-    src: url(/../PlantEncyclopedia/font/BebasNeueBold.ttf);
-}
-@font-face {
-    font-family: courier;
-    src: url(/../PlantEncyclopedia/font/Courier.dfont);
-}
 .node {
   cursor: pointer;
 }
@@ -29,47 +17,38 @@
   stroke: #ccc;
   stroke-width: 1.5px;
 }
+.rest-container {
+  margin-top: 1rem;
+}
 body {
   padding: 0;
   margin: 0;
-  font-family: courier;
+  font-family: roc-grotesk, sans-serif;;
+  background-color: #FFF7E5;
 }
 h1 {
-  font-family: bebas-bold;
-  font-size: 26px;
-  margin: 0;
-  padding: 0 0 4px 0;
+  font-family: roc-grotesk, sans-serif;;
+  font-size: 5em;
 }
 h2 {
-  font-family: bebas;
-  font-size: 24px;
-  margin-bottom: 0;
+  font-family: roc-grotesk, sans-serif;;
   display: inline-block;
 }
 #plant-description {
-  color: black;
   text-decoration: none;
   font-size: 14px;
 }
 
-#scientific-name {
-  margin-top: 0px
-}
 #taxonomy {
   margin-top: 40px;
   margin-bottom: -80px;
 }
 p {
-  font-family: courier;
+  font-family: roc-grotesk, sans-serif;;
   font-size: 12px;
 }
 
 #dendrogram-container {
-  width: 41vw;
-  height: 180px;
-  background-color: #FFF;
-  margin-left: -4vw;
-  border: 0px solid red;
 }
 #content-container {
 position: relative;
@@ -78,24 +57,17 @@ position: relative;
   float: right;
 }
 #plant-picture {
-  width: 30vw;
-  display: block;
-  padding-bottom: 8px;
-  margin: 10vh auto;
 }
 #left-page-container {
   margin-left: 1vw;
-  margin-top: 1vw;
   border: 0px solid green;
   display: table;
   width: 48.25vw;
   float: left;
-  text-align: center;
   height: 99vh;
 }
 #right-page-container {
   margin-left: 1vw;
-  margin-top: 11vh;
   border: 0px solid green;
   display: table;
   width: 48vw;
@@ -118,16 +90,16 @@ input {
   border: 2px solid #DDD;
   color: #CCC;
   outline: 0px solid red;
-  font-family: courier;
+  font-family: roc-grotesk, sans-serif;;
 }
 #search-item {
   padding-left: 4px;
   padding-top: 20px;
   padding-right: 3px;
-  background-color: white;
+  background-color: #ffe4b3;
   width: 450px;
   height: 64px;
-  border: 1px solid #DDD;
+  border: 1px solid #f8cc87;
   text-decoration: underline;
   font-size: 12px;
 }
@@ -135,15 +107,15 @@ input {
   padding-left: 4px;
   padding-top: 20px;
   padding-right: 3px;
-  background-color: #EDF2F7;
+  background-color: #ffe4b3;
   width: 450px;
-  color: #718096;
+  color: #d39245;
   height: 64px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #f8cc87;
   text-decoration: none;
   font-size: 16px;
 }
 .search-item:hover {
   cursor: pointer;
-  background-color: #CBD5E0;
+  background-color: #f8cc87;
 }
