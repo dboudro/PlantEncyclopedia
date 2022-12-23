@@ -14,3 +14,6 @@ Python - Linter-pylama 0.10.1
 2. Improve quality and scalability of python scraping code
 3. Remove bracket references [4] in description
 4. Modularize logic
+5. improve [website design](https://starmorph.com)
+
+
